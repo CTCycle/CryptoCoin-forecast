@@ -1,27 +1,28 @@
-# [IMPORT PACKAGES AND SETTING WARNINGS]
-#==============================================================================
 import os
 import sys
 import pandas as pd
 import datetime
 import PySimpleGUI as sg
 import warnings
-warnings.simplefilter(action='ignore', category = DeprecationWarning)
-warnings.simplefilter(action='ignore', category = FutureWarning)
 
-# [IMPORT MODULES AND CLASSES]
-#==============================================================================
-sys.path.append(os.path.join(os.path.dirname(__file__), '../..'))
+# set warnings
+#------------------------------------------------------------------------------
+import warnings
+warnings.simplefilter(action='ignore', category = Warning)
+
+# default folder path
+#------------------------------------------------------------------------------
+initial_folder = os.path.dirname(os.path.realpath(__file__))
+
+# import modules and classes
+#------------------------------------------------------------------------------ 
 from modules.components.scraper_classes import CoingeckoScraper
 from modules.components.data_classes import DataSetFinder
 import modules.global_variables as GlobVar
 
 # [DEFINE PATHS]
 #==============================================================================
-if getattr(sys, 'frozen', False):    
-    data_path = os.path.join(os.path.dirname(sys.executable), 'dataset')              
-else:    
-    data_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'dataset')
+data_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'dataset')
 
 if not os.path.exists(data_path):
     os.mkdir(data_path)     
@@ -122,8 +123,7 @@ while True:
     
     if event == '-FORECAST-':
         import modules.timeseries_forecaster
-        del sys.modules['modules.timeseries_forecaster']       
-    
+        del sys.modules['modules.timeseries_forecaster']     
 
 main_window.close()
 
