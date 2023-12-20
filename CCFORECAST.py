@@ -88,10 +88,10 @@ while True:
             df_prices = API_scraper.fetch_coin_history(coin_name, to_datetime = True)
             file_loc = os.path.join(data_path, '{}_history.csv'.format(coin_name))    
             df_prices.to_csv(file_loc, index = False, sep = ';', encoding = 'utf-8')
-            print('[{0}]: {1} data has been collected and saved in the desired folder'.format(current_datetime, coin_name))   
+            print(f'[{current_datetime}]: {coin_name} data has been collected and saved in the desired folder')   
         except:
             del values['-COINAME-']
-            print('[{0}]: Something went wrong with the API request for "{1}"'.format(current_datetime, coin_name))
+            print(f'[{current_datetime}]: Something went wrong with the API request for "{coin_name}"')
         
         dataset_inspector = DataSetFinder(data_path)
         list_of_files = dataset_inspector.target_files

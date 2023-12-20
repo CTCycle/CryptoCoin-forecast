@@ -1,66 +1,15 @@
-import os
 import pandas as pd
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 import requests as r
 import json
 
-# define the class for inspection of the input folder and generation of files list.
-#==============================================================================
-#==============================================================================
-#==============================================================================
-class WebDriver:
-    
-    """
-    Initializes a webdriver instance with Chrome options set to disable images loading.
-    
-    Keyword arguments:
-    
-    wd_path (str): The file path to the Chrome webdriver executable
-    
-    Returns:
-        
-    None 
-    
-    """
-    def __init__(self, wd_path):
-        self.wd_path = wd_path
-        self.option = webdriver.ChromeOptions()
-        self.chrome_prefs = {}
-        self.option.experimental_options['prefs'] = self.chrome_prefs
-        self.chrome_prefs['profile.default_content_settings'] = {'images': 2}
-        self.chrome_prefs['profile.managed_default_content_settings'] = {'images': 2}  
-        
-        self.max_page_num = 1 # how many pages you will scrape
-        self.num_cryptos = self.max_page_num * 100   
-        self.fetch_ht = 3 # how many coin histories you will scrape
-     
-      
-    
-    
-    
-    
 # define the class for inspection of the input folder and generation of files list
 #==============================================================================
 #==============================================================================
 #==============================================================================
-class CoingeckoScraper:    
-
-    """
-    Initializes a webdriver instance with Chrome options set to disable images loading.
-    
-    Keyword arguments:
-    
-    wd_path (str): The file path to the Chrome webdriver executable
-    
-    Returns:
-        
-    None 
-    """
-        
+class CoingeckoScraper:           
     
     # function to retrieve HTML data
     #==========================================================================
